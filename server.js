@@ -1,4 +1,6 @@
 // set up ======================================================================
+//Load Environment variables
+require('dotenv').config();
 // get all the tools we need
 var express  = require('express');
 var app      = express();
@@ -29,7 +31,7 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport
 
-app.use(session({secret: 'allloveformona22times', saveUninitialized: true, resave: true}));
+app.use(session({secret: process.env.SECRET, saveUninitialized: true, resave: true}));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
